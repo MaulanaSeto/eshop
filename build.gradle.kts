@@ -8,7 +8,7 @@ plugins {
 group = "id.ac.ui.cs.advprog"
 version = "0.0.1-SNAPSHOT"
 
-java {
+java {cd..
     sourceCompatibility = JavaVersion.VERSION_21
 }
 
@@ -72,6 +72,6 @@ tasks.test{
     finalizedBy(tasks.jacocoTestReport)
 }
 
-tasks.jacocoTestReport{
+tasks.jacocoTestReport {
     dependsOn(tasks.test)
 }
