@@ -22,6 +22,7 @@ public class ProductRepository {
         for (int i = 0; i < productData.size(); i++) {
             if (productData.get(i).getProductID().equals(product.getProductID())) {
                 productData.set(i, product);
+                break;
             }
         }
     }
