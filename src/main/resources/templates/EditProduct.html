@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Edit Product</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERd`knLPMO" crossorigin="anonymous">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 </head>
 <body>
 
@@ -11,27 +11,36 @@
     <h3>Edit Product</h3>
     <form id="editForm" th:action="@{/product/edit}" th:object="${product}">
         <input type="hidden" th:field="*{productID}">
-        
+
         <div class="form-group">
             <label for="nameInput">Name</label>
             <input th:field="*{productName}" type="text" class="form-control mb-4 col-4" id="nameInput" placeholder="Enter product name">
         </div>
-    
+
         <div class="form-group">
             <label for="quantityInput">Quantity</label>
             <input th:field="*{productQuantity}" type="text" class="form-control mb-4 col-4" id="quantityInput" placeholder="Enter product quantity">
         </div>
-    
-        <button type="button" class="btn btn-primary" onclick="submitForm()">Edit</button>
-    </form>    
-</div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-</body>
-</html>
+        <button type="button" class="btn btn-primary" onclick="submitForm()">Edit</button>
+    </form>
+</div>
 
 <script>
     function submitForm() {
+        const nameInput = document.getElementById("nameInput").value.trim();
+        const quantityInput = document.getElementById("quantityInput").value.trim();
+
+        if (nameInput === "") {
+            alert("Product name cannot be empty!");
+            return;
+        }
+
+        if (!/^\d+$/.test(quantityInput)) {
+            alert("Please enter a valid integer for the quantity!");
+            return;
+        }
+
         const form = document.getElementById("editForm");
         const formData = new FormData(form);
         const data = Object.fromEntries(formData.entries());
@@ -50,4 +59,8 @@
             }
         }).catch(error => console.error("Error:", error));
     }
-</script>    
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</body>
+</html>
