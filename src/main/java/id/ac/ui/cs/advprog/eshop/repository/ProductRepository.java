@@ -10,10 +10,16 @@ import java.util.List;
 @Repository
 public class ProductRepository {
     private List<Product> productData = new ArrayList<>();
+    private long idCounter = 0;
 
     public Product create(Product product) {
+        product.setProductID(String.valueOf(idCounter++));
         productData.add(product);
         return product;
+    }
+
+    public void delete(String productID) {
+        productData.removeIf(product -> product.getProductID().equals(productID));
     }
 
     public Iterator<Product> findAll() {
