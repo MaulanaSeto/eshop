@@ -8,7 +8,7 @@
 <body>
 
 <div class="container my-2">
-    <h2>Product' List</h2>
+    <h2>Product List</h2>
     <a th:href="@{/product/create}" class="btn btn-primary btn-sm mb-3">Create Product</a>
 
     <table border="1" class="table table-striped table-responsive-md">
@@ -25,11 +25,36 @@
             <td th:text="${product.productQuantity}"></td>
             <td>
                 <a th:href="@{/product/edit/{id}(id=${product.productID})}" class="btn btn-primary">Edit</a>
+                <button class="btn btn-danger" th:attr="data-id=${product.productID}" onclick="deleteProduct(this.getAttribute('data-id'))">Delete</button>
             </td>
         </tr>
         </tbody>
     </table>
 </div>
+
+<script>
+    function deleteProduct(productID) {
+        if (!confirm("Are you sure you want to delete this product?")) {
+            return;
+        }
+
+        fetch(`/product/delete/${productID}`, {
+            method: "DELETE",
+            redirect: "manual"  // Prevent fetch from automatically following redirects
+        })
+            .then(response => {
+                // Get the redirect URL from the "Location" header.
+                const redirectUrl = response.headers.get("Location");
+                if (redirectUrl) {
+                    window.location.href = redirectUrl;
+                } else {
+                    // Fallback: redirect to a default URL.
+                    window.location.href = "/product/list";
+                }
+            })
+            .catch(error => console.error("Error:", error));
+    }
+</script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
