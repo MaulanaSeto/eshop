@@ -13,7 +13,9 @@ public class ProductRepository {
     private long idCounter = 0;
 
     public Product create(Product product) {
-        product.setProductID(String.valueOf(idCounter++));
+        if (product.getProductID() == null)
+            product.setProductID(String.valueOf(idCounter++));
+
         productData.add(product);
         return product;
     }
