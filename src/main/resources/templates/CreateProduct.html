@@ -26,8 +26,8 @@
 <!-- JavaScript for client-side validation -->
 <script>
     document.getElementById("productForm").addEventListener("submit", function(e) {
-        var nameValue = document.getElementById("nameInput").value.trim();
-        var quantityValue = document.getElementById("quantityInput").value.trim();
+        const nameValue = document.getElementById("nameInput").value.trim();
+        const quantityValue = document.getElementById("quantityInput").value.trim();
 
         // Validation for empty product name
         if (nameValue === "") {
