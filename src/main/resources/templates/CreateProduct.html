@@ -23,20 +23,17 @@
     </form>
 </div>
 
-<!-- JavaScript for client-side validation -->
 <script>
     document.getElementById("productForm").addEventListener("submit", function(e) {
         const nameValue = document.getElementById("nameInput").value.trim();
         const quantityValue = document.getElementById("quantityInput").value.trim();
 
-        // Validation for empty product name
         if (nameValue === "") {
             alert("Product name cannot be empty!");
             e.preventDefault();
             return;
         }
 
-        // Validation for quantity as a positive integer
         if (!/^\d+$/.test(quantityValue)) {
             alert("Please enter a valid integer for the quantity!");
             e.preventDefault();

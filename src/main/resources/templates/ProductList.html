@@ -40,19 +40,15 @@
 
         fetch(`/product/delete/${productID}`, {
             method: "DELETE",
-            redirect: "manual"  // Prevent fetch from automatically following redirects
-        })
-            .then(response => {
-                // Get the redirect URL from the "Location" header.
-                const redirectUrl = response.headers.get("Location");
-                if (redirectUrl) {
-                    window.location.href = redirectUrl;
-                } else {
-                    // Fallback: redirect to a default URL.
-                    window.location.href = "/product/list";
-                }
-            })
-            .catch(error => console.error("Error:", error));
+            redirect: "manual"
+        }).then(response => {
+            const redirectUrl = response.headers.get("Location");
+            if (redirectUrl) {
+                window.location.href = redirectUrl;
+            } else {
+                window.location.href = "/product/list";
+            }
+        }).catch(error => console.error("Error:", error));
     }
 </script>
 
