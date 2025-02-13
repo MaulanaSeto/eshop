@@ -63,4 +63,119 @@ public class ProductRepositoryTest {
         assertEquals(product2.getProductID(), savedProduct.getProductID());
         assertFalse(productIterator.hasNext());
     }
+
+    @Test
+    void testEdit() {
+        Product product = new Product();
+        product.setProductID("eb558e9f-1c39-460e-8860-71af6af63bd6");
+        product.setProductName("Original Name");
+        product.setProductQuantity(10);
+        productRepository.create(product);
+
+        Product updatedProduct = new Product();
+        updatedProduct.setProductID("eb558e9f-1c39-460e-8860-71af6af63bd6");
+        updatedProduct.setProductName("Updated Name");
+        updatedProduct.setProductQuantity(20);
+        productRepository.edit(updatedProduct);
+
+        Product retrieved = productRepository.findById("eb558e9f-1c39-460e-8860-71af6af63bd6");
+        assertNotNull(retrieved);
+        assertEquals("Updated Name", retrieved.getProductName());
+        assertEquals(20, retrieved.getProductQuantity());
+    }
+
+    @Test
+    void testDelete() {
+        Product product = new Product();
+        product.setProductID("eb558e9f-1c39-460e-8860-71af6af63bd6");
+        product.setProductName("To Be Deleted");
+        product.setProductQuantity(5);
+        productRepository.create(product);
+
+        productRepository.delete("eb558e9f-1c39-460e-8860-71af6af63bd6");
+        assertNull(productRepository.findById("eb558e9f-1c39-460e-8860-71af6af63bd6"));
+    }
+
+    @Test
+    void testFindById() {
+        Product product = new Product();
+        product.setProductID("abc");
+        product.setProductName("Find Me");
+        product.setProductQuantity(15);
+        productRepository.create(product);
+
+        Product retrieved = productRepository.findById("abc");
+        assertNotNull(retrieved);
+        assertEquals("Find Me", retrieved.getProductName());
+        assertEquals(15, retrieved.getProductQuantity());
+    }
+
+    @Test
+    void testFindByIdNonExistent() {
+        assertNull(productRepository.findById("non-existent"));
+    }
+
+    @Test
+    void testDeleteNonExistent() {
+        Product product = new Product();
+        product.setProductID("1");
+        product.setProductName("Existing Product");
+        product.setProductQuantity(10);
+        productRepository.create(product);
+
+        productRepository.delete("non-existent");
+        assertNotNull(productRepository.findById("1"));
+    }
+
+    @Test
+    void testEditNonExistent() {
+        Product product = new Product();
+        product.setProductID("1");
+        product.setProductName("Original Product");
+        product.setProductQuantity(10);
+        productRepository.create(product);
+
+        Product nonExistent = new Product();
+        nonExistent.setProductID("non-existent");
+        nonExistent.setProductName("Updated Name");
+        nonExistent.setProductQuantity(20);
+        productRepository.edit(nonExistent);
+
+        Product retrieved = productRepository.findById("1");
+        assertEquals("Original Product", retrieved.getProductName());
+        assertEquals(10, retrieved.getProductQuantity());
+    }
+
+    @Test
+    void testCreateNullProduct() {
+        assertThrows(NullPointerException.class, () -> productRepository.create(null));
+    }
+
+    @Test
+    void testEditWithNullProduct() {
+        assertThrows(NullPointerException.class, () -> productRepository.edit(null));
+    }
+
+    @Test
+    void testDeleteWithNullId() {
+        Product product = new Product();
+        product.setProductID("1");
+        product.setProductName("Existing Product");
+        product.setProductQuantity(10);
+        productRepository.create(product);
+
+        productRepository.delete(null);
+        assertNotNull(productRepository.findById("1"));
+    }
+
+    @Test
+    void testFindByIdWithNullId() {
+        Product product = new Product();
+        product.setProductID("1");
+        product.setProductName("Existing Product");
+        product.setProductQuantity(10);
+        productRepository.create(product);
+
+        assertNull(productRepository.findById(null));
+    }
 }
