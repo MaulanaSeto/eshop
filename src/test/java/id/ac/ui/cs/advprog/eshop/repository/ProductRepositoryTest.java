@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.boot.test.mock.mockito.MockBean;
 
 import java.util.Iterator;
 
@@ -33,6 +32,26 @@ public class ProductRepositoryTest {
         assertEquals(product.getProductID(), savedProduct.getProductID());
         assertEquals(product.getProductName(), savedProduct.getProductName());
         assertEquals(product.getProductQuantity(), savedProduct.getProductQuantity());
+    }
+
+    @Test
+    void testCreateWithNullProductID() {
+        Product product = new Product();
+        product.setProductName("Unnamed Product");
+        product.setProductQuantity(5);
+        Product createdProduct = productRepository.create(product);
+
+        assertNotNull(createdProduct.getProductID());
+        assertEquals("Unnamed Product", createdProduct.getProductName());
+        assertEquals(5, createdProduct.getProductQuantity());
+    }
+
+    @Test
+    void testEditWithNullProductID() {
+        Product product = new Product();
+        product.setProductName("Invalid Product");
+        product.setProductQuantity(10);
+        assertThrows(NullPointerException.class, () -> productRepository.edit(product));
     }
 
     @Test
