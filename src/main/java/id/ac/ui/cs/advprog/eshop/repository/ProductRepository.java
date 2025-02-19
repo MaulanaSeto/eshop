@@ -13,6 +13,9 @@ public class ProductRepository {
     private long idCounter = 0;
 
     public Product create(Product product) {
+        if (product == null) 
+            throw new NullPointerException("Product cannot be null");
+
         if (product.getProductID() == null)
             product.setProductID(String.valueOf(idCounter++));
 
@@ -21,6 +24,12 @@ public class ProductRepository {
     }
 
     public void edit(Product product) {
+        if (product == null)
+            throw new NullPointerException("Product cannot be null");
+
+        if (product.getProductID() == null)
+            throw new NullPointerException("Product ID cannot be null");
+
         for (int i = 0; i < productData.size(); i++) {
             if (productData.get(i).getProductID().equals(product.getProductID())) {
                 productData.set(i, product);
