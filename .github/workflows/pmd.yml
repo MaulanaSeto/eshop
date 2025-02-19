@@ -22,12 +22,10 @@ jobs:
           distribution: 'temurin'
           java-version: '11'
       - uses: pmd/pmd-github-action@v2
-        id: pmd
         with:
-          version: '6.55.0'
-          sourcePath: 'src/main/java'
-          rulesets: 'rulesets/java/quickstart.xml,ruleset.xml'
-      - name: "Upload to code-scanning"
+          rulesets: 'ruleset.xml'
+          analyzeModifiedFilesOnly: false
+      - name: Upload SARIF file
         uses: github/codeql-action/upload-sarif@v3
         with:
-         sarif_file: pmd-report.sarif
+          sarif_file: pmd-report.sarif
