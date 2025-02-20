@@ -15,7 +15,7 @@ public class ProductRepository {
     public Product create(Product product) {
         if (product == null) throw new NullPointerException("Product cannot be null");
 
-        if (product.getProductID() == null) product.setProductID(String.valueOf(idCounter++));
+        if (product.getProductId() == null) product.setProductId(String.valueOf(idCounter++));
 
         productData.add(product);
         return product;
@@ -24,10 +24,10 @@ public class ProductRepository {
     public void edit(Product product) {
         if (product == null) throw new NullPointerException("Product cannot be null");
 
-        if (product.getProductID() == null) throw new NullPointerException("Product ID cannot be null");
+        if (product.getProductId() == null) throw new NullPointerException("Product ID cannot be null");
 
         for (int i = 0; i < productData.size(); i++) {
-            if (productData.get(i).getProductID().equals(product.getProductID())) {
+            if (productData.get(i).getProductId().equals(product.getProductId())) {
                 productData.set(i, product);
                 break;
             }
@@ -35,7 +35,7 @@ public class ProductRepository {
     }
 
     public void delete(String productID) {
-        productData.removeIf(product -> product.getProductID().equals(productID));
+        productData.removeIf(product -> product.getProductId().equals(productID));
     }
 
     public Iterator<Product> findAll() {
@@ -44,7 +44,7 @@ public class ProductRepository {
 
     public Product findById(String id) {
         for (Product product : productData) {
-            if (product.getProductID().equals(id)) {
+            if (product.getProductId().equals(id)) {
                 return product;
             }
         }

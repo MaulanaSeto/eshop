@@ -34,7 +34,7 @@ class ProductControllerTest {
     void setUp() {
         mockMvc = MockMvcBuilders.standaloneSetup(productController).build();
         product = new Product();
-        product.setProductID("1abc");
+        product.setProductId("1abc");
         product.setProductName("Test Product");
         product.setProductQuantity(69);
     }
