@@ -9,10 +9,6 @@ import org.mockito.Mockito;
 @SpringBootTest
 class EshopApplicationTests {
     @Test
-    void contextLoads() {
-    }
-
-    @Test
     void testMainMethod() {
         try (MockedStatic<SpringApplication> mockedSpringApplication = Mockito.mockStatic(SpringApplication.class)) {
             mockedSpringApplication.when(() -> SpringApplication.run(

@@ -24,8 +24,8 @@
             <td th:text="${product.productName}"></td>
             <td th:text="${product.productQuantity}"></td>
             <td>
-                <a th:href="@{/product/edit/{id}(id=${product.productID})}" class="btn btn-primary">Edit</a>
-                <button class="btn btn-danger" th:attr="data-id=${product.productID}" onclick="deleteProduct(this.getAttribute('data-id'))">Delete</button>
+                <a th:href="@{/product/edit/{id}(id=${product.productId})}" class="btn btn-primary">Edit</a>
+                <button class="btn btn-danger" th:attr="data-id=${product.productId}" onclick="deleteProduct(this.getAttribute('data-id'))">Delete</button>
             </td>
         </tr>
         </tbody>
@@ -33,12 +33,12 @@
 </div>
 
 <script>
-    function deleteProduct(productID) {
+    function deleteProduct(productId) {
         if (!confirm("Are you sure you want to delete this product?")) {
             return;
         }
 
-        fetch(`/product/delete/${productID}`, {
+        fetch(`/product/delete/${productId}`, {
             method: "DELETE",
             redirect: "manual"
         }).then(response => {
