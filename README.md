@@ -19,3 +19,31 @@ Setelah saya membuat functional test untuk membuat produk saya rasa saya akan te
    - Variabel `ID`<br>
      Mengubah nama variabel `ID` menjadi `Id` agar sesuai dengan aturan penamaan variabel di Java.
 2. Implementasi *workflow* pada modul kali ini telah memenuhi definisi CI/CD. Hal ini terlihat dari proses GitHub Actions. Setiap terdapat *push* ke repositori GitHub, kode akan dites melalui *workflow* yang ada. Kode ini juga telah mengaplikasi *workflow* Sonarcloud dan PMD yang memeriksa kebersihan kode. Kode ini telah menerapkan Continuous Deployment yang bekerja dengan cara melakukan *merge* ke *branch* *main* lalu akan secara otomatis dilakukan *deployment* ke platform Koyeb. Aplikasi ini dapat diakses melalui tautan https://malset-eshop.koyeb.app/.
+
+# Modul 3
+### Refleksi
+1. Penerapan Prinsip SOLID
+   - Single Responsibility Principle<br>
+     Kelas `CarController` dipisah dari berkas `ProductController.java` agar berkas tersebut hanya memiliki satu tugas, yaitu menangani permintaan dan repsons HTTP untuk fungsionalitas Produk.
+   - Open-Closed Principle<br>
+     Kode ini telah menerapkan OCP, karena tidak ada perubahan kode yang sudah ada jika akan menambah fitur atau fungsionalitas baru.
+   - Liskov Substitution Principle<br>
+     Prinsip ini belum bisa diter
+   - Interface Segregation Principle<br>
+     Pembuatan dua antarmuka `ProductService` dan `CarService` menerapkan prinsip ini, karena kelas yang mengimplementasinya hanya perlu menggunakan metode yang relevan dengan fungsinya tanpa harus mengimplementasi metode yang tidak dibutuhkan.
+   - Dependency Inversion Principle<br>
+     Mengganti atribut kelas `CarController` dari bertipe data `CarServiceImpl` menjadi `CarService` agar kelas tersebut bergantung pada antarmuka yang lebih spesifik dan sesuai kebutuhan daripada implementasi konkret.
+2. Keuntungan Menggunakan Prinsip SOLID
+   - Pemeliharaan<br>
+     Kode pada proyek ini terdiri dari beberapa modul dengan fungsinya masing-masing. Pemisahan modul membuat proses *debugging* kode menjadi lebih mudah.
+   - Keterbacaan<br>
+     Prinsip SOLID meningkatkan keterbacaan dan pemahaman kode, sehingga lebih mudah bagi pengembang lain untuk memahami kode.
+   - Fleksibilitas dan Skalabilitas<br>
+     Kode lebih mudah diubah dan ditingkatkan seiring waktu tanpa mengganggu struktur kode yang sudah ada.
+3. Kerugian Tidak Menggunakan Prinsip SOLID
+   - Pemeliharaan<br>
+     Kode cenderung memiliki keterkaitan antar komponen yang tinggi, sehingga setiap perubahan kecil dapat menyebabkan masalah di banyak bagian kode lainnya. Hal ini membuat proses *debugging* menjadi lebih sulit.
+   - Keterbacaan<br>
+     Kode berpotensi menjadi tidak terstruktur dan sulit dipahami oleh pengembang lain. Hal ini dapat menyulitkan tim dalam menelusuri alur program dan meningkatkan risiko kesalahan dalam pengembangan.
+   - Fleksibilitas dan Skalabilitas<br>
+     Kode yang tidak dirancang dengan baik akan sulit untuk dikembangkan lebih lanjut. Perubahan atau penambahan fitur baru bisa menyebabkan banyak perubahan pada kode yang sudah ada, meningkatkan risiko *bug* dan menghambat skalabilitas proyek.     
