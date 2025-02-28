@@ -33,14 +33,14 @@ Setelah saya membuat functional test untuk membuat produk saya rasa saya akan te
      Pembuatan dua antarmuka `ProductService` dan `CarService` menerapkan prinsip ini, karena kelas yang mengimplementasinya hanya perlu menggunakan metode yang relevan dengan fungsinya tanpa harus mengimplementasi metode yang tidak dibutuhkan.
    - Dependency Inversion Principle<br>
      Mengganti atribut kelas `CarController` dari bertipe data `CarServiceImpl` menjadi `CarService` agar kelas tersebut bergantung pada antarmuka yang lebih spesifik dan sesuai kebutuhan daripada implementasi konkret.
-2. Keuntungan Menggunakan Prinsip Solid
+2. Keuntungan Menggunakan Prinsip SOLID
    - Pemeliharaan<br>
      Kode pada proyek ini terdiri dari beberapa modul dengan fungsinya masing-masing. Pemisahan modul membuat proses *debugging* kode menjadi lebih mudah.
    - Keterbacaan<br>
      Prinsip SOLID meningkatkan keterbacaan dan pemahaman kode, sehingga lebih mudah bagi pengembang lain untuk memahami kode.
    - Fleksibilitas dan Skalabilitas<br>
      Kode lebih mudah diubah dan ditingkatkan seiring waktu tanpa mengganggu struktur kode yang sudah ada.
-3. Kerugian Tidak Menggunakan Prinsip Solid
+3. Kerugian Tidak Menggunakan Prinsip SOLID
    - Pemeliharaan<br>
      Kode cenderung memiliki keterkaitan antar komponen yang tinggi, sehingga setiap perubahan kecil dapat menyebabkan masalah di banyak bagian kode lainnya. Hal ini membuat proses *debugging* menjadi lebih sulit.
    - Keterbacaan<br>
