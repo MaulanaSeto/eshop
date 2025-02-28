@@ -28,7 +28,7 @@ Setelah saya membuat functional test untuk membuat produk saya rasa saya akan te
    - Open-Closed Principle<br>
      Kode ini telah menerapkan OCP, karena tidak ada perubahan kode yang sudah ada jika akan menambah fitur atau fungsionalitas baru.
    - Liskov Substitution Principle<br>
-     Prinsip ini belum bisa diter
+     Prinsip ini belum bisa diterapkan pada proyek ini.
    - Interface Segregation Principle<br>
      Pembuatan dua antarmuka `ProductService` dan `CarService` menerapkan prinsip ini, karena kelas yang mengimplementasinya hanya perlu menggunakan metode yang relevan dengan fungsinya tanpa harus mengimplementasi metode yang tidak dibutuhkan.
    - Dependency Inversion Principle<br>
