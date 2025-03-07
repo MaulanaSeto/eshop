@@ -31,7 +31,7 @@ public class PaymentRepository {
         return null;
     }
 
-    public List<Payment> getAllPayments() {
+    public List<Payment> findAll() {
         return paymentData;
     }
 }

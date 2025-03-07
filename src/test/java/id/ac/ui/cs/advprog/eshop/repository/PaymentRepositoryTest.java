@@ -56,7 +56,7 @@ class PaymentRepositoryTest {
         Payment savedUpdatedPayment = paymentRepository.save(updatedPayment);
 
         assertNotNull(savedUpdatedPayment);
-        assertEquals(1, paymentRepository.getAllPayments().size());
+        assertEquals(1, paymentRepository.findAll().size());
 
         Payment fetchedPayment = paymentRepository.findById("payment1");
         assertNotNull(fetchedPayment);
@@ -84,7 +84,7 @@ class PaymentRepositoryTest {
         paymentRepository.save(payment1);
         paymentRepository.save(payment2);
 
-        List<Payment> allPayments = paymentRepository.getAllPayments();
+        List<Payment> allPayments = paymentRepository.findAll();
         assertEquals(2, allPayments.size());
         assertTrue(allPayments.stream().anyMatch(p -> p.getId().equals("payment1")));
         assertTrue(allPayments.stream().anyMatch(p -> p.getId().equals("payment2")));
