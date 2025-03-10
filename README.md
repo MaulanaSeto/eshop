@@ -46,4 +46,15 @@ Setelah saya membuat functional test untuk membuat produk saya rasa saya akan te
    - Keterbacaan<br>
      Kode berpotensi menjadi tidak terstruktur dan sulit dipahami oleh pengembang lain. Hal ini dapat menyulitkan tim dalam menelusuri alur program dan meningkatkan risiko kesalahan dalam pengembangan.
    - Fleksibilitas dan Skalabilitas<br>
-     Kode yang tidak dirancang dengan baik akan sulit untuk dikembangkan lebih lanjut. Perubahan atau penambahan fitur baru bisa menyebabkan banyak perubahan pada kode yang sudah ada, meningkatkan risiko *bug* dan menghambat skalabilitas proyek.     
+     Kode yang tidak dirancang dengan baik akan sulit untuk dikembangkan lebih lanjut. Perubahan atau penambahan fitur baru bisa menyebabkan banyak perubahan pada kode yang sudah ada, meningkatkan risiko *bug* dan menghambat skalabilitas proyek.
+
+# Modul 4
+### Refleksi
+1. TDD memberi manfaat signifikan dalam beberapa aspek utama.
+   1) Kebenaran<br>
+      Menulis pengujian sebelum mengimplementasi fungsionalitas dapat memastikan bahwa kode memenuhi persyaratan yang ditentukan. Pendekatan proaktif ini membantu mengidentifikasi dan mengatasi masalah sejak awal dalam proses pengembangan, sehingga menghasilkan perangkat lunak yang lebih andal.
+   2) Pemeliharaan<br>
+      Pengujian berfungsi sebagai jaring pengaman memungkinkan untuk melakukan refaktor dan peningkatan kode dengan lebiih mudah. Praktik ini mengarah pada kode yang lebih bersih dan lebih mudah dipelihara seiring waktu.
+   3) Alur Kerja Produksi<br>
+      Mengintegrasikan TDD ke dalam siklus pengembangan telah merampingkan alur kerja dengan memberikan umpan balik langsung terhadap perubahan kode.
+2. Kode pengujian ini telah memenuhi prinsip FIRST.
